@@ -1,0 +1,16 @@
+@model TodoApp.Models.TodoModel;
+
+<h1>Update Todo Item</h1>
+
+<form asp-action="Update" method="post">
+    <input type="hidden" name="_id" value="@Model._id" />
+    <div class="form-group">
+        <label for="Title">Title</label>
+        <input type="text" class="form-control" id="Title" name="Title" value="@Model.Title" required/>
+    </div>
+    <div class="form-group">
+        <label for="Description">Description</label>
+        <input type="text" class="form-control" id="Description" name="Description" value="@Model.Description" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+</form>

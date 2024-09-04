@@ -1,0 +1,28 @@
+@using System.Collections.Generic
+@using MongoDB.Bson
+
+@model List<TodoApp.Models.TodoModel>
+
+@{
+    ViewData["Title"] = "Todo List Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Todo List</h1>
+    <p>List of Todos follow:</p>
+    @foreach (var todo in Model)
+    {
+        <p>@todo.Title</p>
+        <p>@todo.Description</p>
+        <div display="flex" justify-content="space-between">
+        <a href="/Todo/Update?id=@todo._id" class="btn btn-primary">Update</a>
+        <form asp-action="Delete" method="post" style="display:inline;">
+        <input type="hidden" name="id" value="@todo._id" />
+        <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+        </div>
+        <hr>
+
+    }
+    <a href="/Todo/Create" class="btn btn-primary">Create!</a>
+</div>
